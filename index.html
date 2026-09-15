@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amounter | Início</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <style>
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            background:
+                linear-gradient(0deg,
+                    rgba(10, 15, 25, 0.92),
+                    rgba(17, 24, 39, 0.70)),
+                url("images/img-1.avif") center / cover no-repeat fixed;
+        }
+
+        /* =========================
+           CONTEÚDO PRINCIPAL
+        ========================= */
+
+        #main-index {
+            width: min(1050px, 90%);
+
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        /* =========================
+           INTRODUÇÃO
+        ========================= */
+
+        .intro {
+            margin-bottom: 45px;
+            max-width: 650px;
+        }
+
+        .intro small {
+            display: inline-block;
+
+            margin-bottom: 14px;
+
+            color: #60a5fa;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .intro h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.02;
+            letter-spacing: -3px;
+
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            max-width: 560px;
+
+            color: rgba(255, 255, 255, 0.62);
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .btn-index {
+            position: relative;
+
+            display: block;
+
+            min-height: 240px;
+
+            padding: 34px;
+
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 18px;
+
+            background: rgba(255, 255, 255, 0.055);
+
+            color: #ffffff;
+            text-decoration: none;
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .btn-index::before {
+            content: "";
+
+            position: absolute;
+
+            width: 140px;
+            height: 140px;
+
+            right: -60px;
+            top: -60px;
+
+            border-radius: 50%;
+
+            background: rgba(96, 165, 250, 0.12);
+
+            transition: transform 0.3s ease;
+        }
+
+
+        .btn-index:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(96, 165, 250, 0.45);
+
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+
+        .btn-index:hover::before {
+            transform: scale(1.5);
+        }
+
+
+        .btn-index div {
+            position: relative;
+            z-index: 1;
+
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* =========================
+           CARD TEXTO
+        ========================= */
+
+        .btn-index h3 {
+            margin-bottom: 15px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            color: #60a5fa;
+        }
+
+
+        .btn-index p {
+            max-width: 390px;
+
+            color: rgba(255, 255, 255, 0.65);
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+
+        .btn-index span {
+            margin-top: auto;
+
+            font-size: 24px;
+            font-weight: 300;
+
+            color: rgba(255, 255, 255, 0.7);
+
+            transition:
+                transform 0.25s ease,
+                color 0.25s ease;
+        }
+
+
+        .btn-index:hover span {
+            transform: translateX(8px);
+            color: #60a5fa;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            width: 100%;
+
+            padding: 25px 6%;
+
+            text-align: center;
+
+            color: rgba(255, 255, 255, 0.35);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 22px 5%;
+            }
+
+            .header-label {
+                display: none;
+            }
+
+            #main-index {
+                width: 90%;
+                margin: 70px auto 50px;
+            }
+
+            .intro {
+                margin-bottom: 32px;
+            }
+
+            .intro h1 {
+                letter-spacing: -2px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-index {
+                min-height: 210px;
+                padding: 28px;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            Amounter<span>.</span>
+        </div>
+
+        <div class="header-label">
+            CALCULADORA FINANCEIRA
+        </div>
+
+    </header>
+
+
+    <main id="main-index">
+
+        <section class="intro">
+
+            <small>Planeje seu dinheiro</small>
+
+            <h1>
+                Transforme tempo<br>
+                em patrimônio.
+            </h1>
+
+            <p>
+                Simule o crescimento do seu dinheiro e descubra
+                quanto tempo é necessário para alcançar seus objetivos.
+            </p>
+
+        </section>
+
+
+        <section class="cards">
+
+
+            <a href="Pages/meses.html" class="btn-index">
+
+                <div>
+
+                    <h3>N MESES</h3>
+
+                    <p>
+                        Calcule o montante acumulado após um
+                        número determinado de meses.
+                    </p>
+
+                    <span>→</span>
+
+                </div>
+
+            </a>
+
+
+            <a href="Pages/montante.html" class="btn-index">
+
+                <div>
+
+                    <h3>MONTANTE</h3>
+
+                    <p>
+                        Descubra quantos meses serão necessários
+                        para atingir o montante desejado.
+                    </p>
+
+                    <span>→</span>
+
+                </div>
+
+            </a>
+
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div class="footer-content">
+            <span>© 2026 Amounter</span>
+
+            <nav aria-label="Links institucionais">
+                <a href="compliance/privacidade.html">Privacidade</a>
+                <a href="compliance/termos.html">Termos de Uso</a>
+                <a href="compliance/contato.html">Contato</a>
+            </nav>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
