@@ -74,6 +74,10 @@
     border-radius: 8px;
 }
 
+.ad-horizontal {
+    display: none;
+}
+
 
 /* =========================================================
    IDENTIFICAÇÃO DA PUBLICIDADE
@@ -95,6 +99,8 @@
 }
 
 
+
+
 /* =========================================================
    TELA ESTREITA
    ========================================================= */
@@ -107,6 +113,12 @@
 
     .ad-sidebar {
         display: none;
+    }
+
+    .ad-horizontal {
+        display: block;
+        width: calc(100% - 32px);
+        margin: 20px auto;
     }
 }
 
