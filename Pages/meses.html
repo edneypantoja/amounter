@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amounter | N Meses</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/ads.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+    <style>
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            background:
+                linear-gradient(0deg,
+                    rgba(10, 15, 25, 0.94),
+                    rgba(17, 24, 39, 0.70)),
+                url("../images/img-2.jfif") center / cover no-repeat fixed;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <a href="../index.html" class="logo">
+            Amounter<span>.</span>
+        </a>
+
+        <div class="header-label">
+            CALCULADORA FINANCEIRA
+        </div>
+
+    </header>
+
+    <!-- =========================
+         CONTEÚDO
+    ========================= -->
+
+    <div class="content-layout">
+        <aside class="ad-sidebar ad-left">
+            <div class="ad-slot"><img src="../assets/ads/banner-lateral-01.jfif" alt="Publicidade"></div>
+        </aside>
+
+        <main class="container">
+
+
+            <!-- TÍTULO -->
+
+            <section class="page-header">
+
+                <small>Simulação financeira</small>
+
+                <h1>Calcule por N meses.</h1>
+
+                <p>
+                    Informe o valor inicial, os aportes, a taxa de rendimento
+                    e o período da simulação para acompanhar a evolução
+                    do investimento.
+                </p>
+
+            </section>
+
+
+            <!-- =========================
+                FORMULÁRIO
+            ========================= -->
+
+            <section class="calculator">
+
+                <form id="form-calculo">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="field">
+
+                            <label for="valor-inicial">
+                                Valor inicial
+                            </label>
+
+                            <input type="text" id="valor-inicial" value="R$ 1.000,00" inputmode="numeric"
+                                autocomplete="off" required>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="aporte">
+                                Aporte por período
+                            </label>
+
+                            <input type="text" id="aporte" value="R$ 500,00" inputmode="numeric" autocomplete="off"
+                                required>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="taxa">
+                                Taxa de rendimento mensal (%)
+                            </label>
+
+                            <input type="number" id="taxa" value="1.00" min="0" step="0.01" required>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="meses">
+                                Período da simulação
+                            </label>
+
+                            <input type="number" id="meses" value="12" min="1" step="1" required>
+
+                            <small>
+                                Informe a quantidade de meses que deseja simular.
+                            </small>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="periodicidade">
+                                Periodicidade do aporte
+                            </label>
+
+                            <select id="periodicidade">
+
+                                <option value="1" selected>
+                                    Mensal
+                                </option>
+
+                                <option value="3">
+                                    Trimestral
+                                </option>
+
+                                <option value="6">
+                                    Semestral
+                                </option>
+
+                                <option value="12">
+                                    Anual
+                                </option>
+
+                            </select>
+
+                            <small>
+                                Os juros continuam incidindo mensalmente.
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="checkbox-field">
+
+                        <input type="checkbox" id="isento" checked>
+
+                        <label for="isento">
+                            Investimento isento de IR
+                        </label>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button type="submit">
+                            Calcular
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================
+                RESULTADO
+            ========================= -->
+
+            <section id="resultado">
+
+
+                <div class="result-header">
+
+                    <div>
+
+                        <h2>Resultado da simulação</h2>
+
+                    </div>
+
+                    <p id="resultado-meta"></p>
+
+                </div>
+
+
+                <!-- RESUMO -->
+
+                <div class="summary">
+
+
+                    <div class="summary-card">
+
+                        <span>Período</span>
+
+                        <strong id="resumo-meses">
+                            -
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <span>Total de aportes</span>
+
+                        <strong id="resumo-aportes">
+                            -
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <span>Rendimentos líquidos</span>
+
+                        <strong id="resumo-rendimento">
+                            -
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <span>Montante final</span>
+
+                        <strong id="resumo-montante" class="credito">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- TABELA -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Período</th>
+
+                                <th>Mês</th>
+
+                                <th>Principal</th>
+
+                                <th>Rendimento período</th>
+
+                                <th>Rendimentos totais</th>
+
+                                <th>IRPF</th>
+
+                                <th>Montante líquido</th>
+
+                                <th>Aporte</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tabela-resultados"></tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <a href="../index.html" class="back">
+                ← Voltar
+            </a>
+        </main>
+
+        <aside class="ad-sidebar ad-right">
+            <div class="ad-slot">
+                <div class="ad-slot"><img src="../assets/ads/banner-lateral-01.jfif" alt="Publicidade"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>© 2026 Amounter</span>
+
+            <nav aria-label="Links institucionais">
+                <a href="../compliance/privacidade.html">Privacidade</a>
+                <a href="../compliance/termos.html">Termos de Uso</a>
+                <a href="../compliance/contato.html">Contato</a>
+            </nav>
+        </div>
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /*
+         * ============================================
+         * FORMATAÇÃO
+         * ============================================
+         */
+
+        function moeda(valor) {
+
+            return valor.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
+
+        }
+
+
+        function aplicarMascaraReal(input) {
+
+            input.addEventListener("input", function () {
+
+                let valor = this.value.replace(/\D/g, "");
+
+                if (!valor) {
+
+                    this.value = "";
+
+                    return;
+
+                }
+
+                valor = Number(valor) / 100;
+
+                this.value = valor.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL"
+                });
+
+            });
+
+        }
+
+
+        function converterReal(valor) {
+
+            return Number(
+                valor
+                    .replace(/\s/g, "")
+                    .replace("R$", "")
+                    .replace(/\./g, "")
+                    .replace(",", ".")
+            );
+
+        }
+
+
+        aplicarMascaraReal(
+            document.getElementById("valor-inicial")
+        );
+
+        aplicarMascaraReal(
+            document.getElementById("aporte")
+        );
+
+
+        /*
+         * ============================================
+         * CÁLCULO DO IRPF
+         * ============================================
+         */
+
+        function calcularIR(rendimentos, meses, isento) {
+
+            if (isento) {
+                return 0;
+            }
+
+            if (meses < 6) {
+                return rendimentos * 0.225;
+            }
+
+            if (meses < 12) {
+                return rendimentos * 0.20;
+            }
+
+            if (meses < 24) {
+                return rendimentos * 0.175;
+            }
+
+            return rendimentos * 0.15;
+
+        }
+
+
+        /*
+         * ============================================
+         * FORMULÁRIO
+         * ============================================
+         */
+
+        document
+            .getElementById("form-calculo")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+
+                /*
+                 * ------------------------------------
+                 * INPUTS
+                 * ------------------------------------
+                 */
+
+                const valorInicial =
+                    converterReal(
+                        document.getElementById("valor-inicial").value
+                    );
+
+
+                const aporte =
+                    converterReal(
+                        document.getElementById("aporte").value
+                    );
+
+
+                const taxa =
+                    Number(
+                        document.getElementById("taxa").value
+                    ) / 100;
+
+
+                const mesesDesejados =
+                    Number(
+                        document.getElementById("meses").value
+                    );
+
+
+                const periodicidade =
+                    Number(
+                        document.getElementById("periodicidade").value
+                    );
+
+
+                const isento =
+                    document.getElementById("isento").checked;
+
+
+                /*
+                 * ------------------------------------
+                 * VALIDAÇÕES
+                 * ------------------------------------
+                 */
+
+                if (mesesDesejados < 1) {
+
+                    alert(
+                        "O período deve ser de pelo menos 1 mês."
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                 * ------------------------------------
+                 * VARIÁVEIS DO CÁLCULO
+                 * ------------------------------------
+                 */
+
+                let principal = valorInicial;
+
+                let montante = valorInicial;
+
+                let totalDeMeses = 0;
+
+                let totalAportes = 0;
+
+                let linhas = "";
+
+                let rendimento_anterior = 0
+
+
+                /*
+                 * ====================================
+                 * ITERAÇÕES
+                 * ====================================
+                 */
+
+                while (totalDeMeses < mesesDesejados) {
+
+
+                    /*
+                     * Quantidade de meses desta iteração.
+                     *
+                     * Normalmente será igual à
+                     * periodicidade, mas a última
+                     * iteração pode ser menor.
+                     */
+
+                    const mesesIteracao =
+                        Math.min(
+                            periodicidade,
+                            mesesDesejados - totalDeMeses
+                        );
+
+
+                    /*
+                     * Aplica os juros mês a mês.
+                     */
+
+                    for (
+                        let p = 0;
+                        p < mesesIteracao;
+                        p++
+                    ) {
+
+                        montante *= (1 + taxa);
+
+                    }
+
+
+                    /*
+                     * Avança o período.
+                     */
+
+                    totalDeMeses += mesesIteracao;
+
+
+                    /*
+                     * Calcula o rendimento acumulado.
+                     */
+
+                    const rendimentos = montante - principal;
+
+                    const rendimento_periodo = rendimentos - rendimento_anterior
+
+                    rendimento_anterior = rendimentos
+
+
+
+                    /*
+                     * Calcula IR.
+                     */
+
+                    const irpf =
+                        calcularIR(
+                            rendimentos,
+                            totalDeMeses,
+                            isento
+                        );
+
+
+                    /*
+                     * Montante líquido antes do aporte.
+                     */
+
+                    const montanteLiquido =
+                        montante - irpf;
+
+
+                    /*
+                     * O aporte só ocorre se ainda
+                     * houver uma nova iteração.
+                     *
+                     * Portanto, na última linha da
+                     * simulação o aporte é zero.
+                     */
+
+                    const ultimaIteracao =
+                        totalDeMeses >= mesesDesejados;
+
+
+                    const aporteIteracao =
+                        ultimaIteracao ? 0 : aporte;
+
+
+                    /*
+                     * --------------------------------
+                     * TABELA
+                     * --------------------------------
+                     */
+
+                    linhas += `
+
+                        <tr>
+
+                            <td>
+                                ${Math.ceil(
+                        totalDeMeses / periodicidade
+                    )}
+                            </td>
+
+                            <td>
+                                ${totalDeMeses}
+                            </td>
+
+                            <td>
+                                ${moeda(principal)}
+                            </td>
+
+                            <td class="credito">
+                                ${moeda(rendimento_periodo)}
+                            </td>
+
+                            <td>
+                                ${moeda(rendimentos)}
+                            </td>
+
+                            <td class="${irpf == 0 ? "neutro" : "debito"}">
+                                ${moeda(irpf)}
+                            </td>
+
+                            <td>
+                                ${moeda(montanteLiquido)}
+                            </td>
+
+                            <td>
+                                ${moeda(aporteIteracao)}
+                            </td>
+
+                        </tr>
+
+                    `;
+
+
+                    /*
+                     * --------------------------------
+                     * ÚLTIMA ITERAÇÃO
+                     * --------------------------------
+                     */
+
+                    if (ultimaIteracao) {
+
+                        break;
+
+                    }
+
+
+                    /*
+                     * --------------------------------
+                     * APORTE
+                     * --------------------------------
+                     */
+
+                    principal += aporte;
+
+                    montante += aporte;
+
+                    totalAportes += aporte;
+
+                }
+
+
+                /*
+                 * ====================================
+                 * EXIBE RESULTADO
+                 * ====================================
+                 */
+
+                document.getElementById(
+                    "tabela-resultados"
+                ).innerHTML = linhas;
+
+
+                /*
+                 * ====================================
+                 * TEMPO
+                 * ====================================
+                 */
+
+                const anos =
+                    Math.floor(totalDeMeses / 12);
+
+                const meses =
+                    totalDeMeses % 12;
+
+
+                let tempoTexto = "";
+
+
+                if (anos > 0) {
+
+                    tempoTexto +=
+                        `${anos} ${anos === 1 ? "ano" : "anos"}`;
+
+                }
+
+
+                if (meses > 0) {
+
+                    if (tempoTexto) {
+                        tempoTexto += " e ";
+                    }
+
+                    tempoTexto +=
+                        `${meses} ${meses === 1 ? "mês" : "meses"}`;
+
+                }
+
+
+                document.getElementById(
+                    "resumo-meses"
+                ).textContent = tempoTexto;
+
+
+                /*
+                 * ====================================
+                 * MONTANTE FINAL
+                 * ====================================
+                 */
+
+                const rendimentoFinal =
+                    montante - principal;
+
+
+                const irFinal =
+                    calcularIR(
+                        rendimentoFinal,
+                        totalDeMeses,
+                        isento
+                    );
+
+
+                const montanteFinal =
+                    montante - irFinal;
+
+
+                document.getElementById(
+                    "resumo-montante"
+                ).textContent =
+                    moeda(montanteFinal);
+
+
+                /*
+                 * ====================================
+                 * TOTAL DE APORTES
+                 * ====================================
+                 */
+
+                document.getElementById(
+                    "resumo-aportes"
+                ).textContent =
+                    moeda(totalAportes);
+
+                /*
+                * ====================================
+                * TOTAL DE RENDIMENTOS
+                * ====================================
+                */
+
+                document.getElementById(
+                    "resumo-rendimento"
+                ).textContent =
+                    moeda(rendimentoFinal);
+
+
+                /*
+                 * ====================================
+                 * META
+                 * ====================================
+                 */
+
+                document.getElementById(
+                    "resultado-meta"
+                ).textContent =
+                    `Simulação de ${totalDeMeses} meses`;
+
+
+                /*
+                 * ====================================
+                 * MOSTRA RESULTADO
+                 * ====================================
+                 */
+
+                document.getElementById(
+                    "resultado"
+                ).style.display = "block";
+
+
+                /*
+                 * Rola suavemente até o resultado.
+                 */
+
+                document.getElementById(
+                    "resultado"
+                ).scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>

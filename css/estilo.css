@@ -1,0 +1,475 @@
+/* =========================
+    RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
+    display: flex; 
+    flex-direction: column;
+}
+
+/* =========================
+           HEADER
+========================= */
+
+header {
+    width: 100%;
+    padding: 28px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4vh;
+}
+
+.logo {
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+
+    text-decoration: none;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.header-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* =========================
+    TÍTULO
+========================= */
+
+.page-header {
+    margin-bottom: 35px;
+}
+
+.page-header small {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #60a5fa;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.page-header h1 {
+    margin-bottom: 12px;
+
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+}
+
+.page-header p {
+    max-width: 650px;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* =========================
+    FORMULÁRIO
+========================= */
+
+.calculator {
+    padding: 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.field label {
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.field input,
+.field select {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.20);
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition: border-color 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: rgba(96, 165, 250, 0.7);
+}
+
+.field select option {
+    background: #111827;
+    color: #ffffff;
+}
+
+.field small {
+    color: rgba(255, 255, 255, 0.35);
+
+    font-size: 11px;
+}
+
+/* =========================
+    REMOVER SPINNER
+========================= */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+}
+
+/* =========================
+    CHECKBOX
+========================= */
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+.checkbox-field input {
+    width: 17px;
+    height: 17px;
+
+    accent-color: #60a5fa;
+}
+
+.checkbox-field label {
+    color: rgba(255, 255, 255, 0.70);
+
+    font-size: 13px;
+}
+
+/* =========================
+    BOTÃO
+========================= */
+
+.form-actions {
+    margin-top: 28px;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    height: 48px;
+
+    padding: 0 28px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: #60a5fa;
+
+    color: #0f172a;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+
+/* =========================
+    RESULTADO
+========================= */
+
+#resultado {
+    display: none;
+
+    margin-top: 35px;
+}
+
+.result-header {
+    margin-bottom: 18px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+}
+
+.result-header h2 {
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+
+.result-header p {
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+    RESUMO
+========================= */
+
+.summary {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    padding: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.summary-card span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.summary-card strong {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+
+/* =========================
+    TABELA
+========================= */
+
+.table-container {
+    overflow-x: auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+
+    background: rgba(0, 0, 0, 0.15);
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 760px;
+}
+
+thead {
+    background: rgba(255, 255, 255, 0.055);
+}
+
+th {
+    padding: 16px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-align: right;
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    padding: 15px 16px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.055);
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 13px;
+
+    text-align: right;
+
+    white-space: nowrap;
+}
+
+td {
+    color: #ffffff;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+tr:last-child td {
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+    VOLTAR
+========================= */
+
+.back {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.back:hover {
+    color: #60a5fa;
+}
+
+
+/* =========================
+    RESPONSIVO
+========================= */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 22px 5%;
+    }
+
+    .header-label {
+        display: none;
+    }
+
+    .container {
+        width: 90%;
+
+        margin-top: 30px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator {
+        padding: 22px;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-actions {
+        justify-content: stretch;
+    }
+
+    button {
+        width: 100%;
+    }
+
+}
+
+.credito {
+    color: #60faad;
+}
+
+.debito {
+    color: #fa7260;
+}
+
+
